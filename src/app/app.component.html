@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Tower of Hanoi</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tower of Hanoi</title>
 </head>
 <body>
-	<div class="container">
-		<!-- so first of all, we need to draw an cylinder -->
-		<section class="tower">
-			<span class="oval top-oval"></span>
-		</section>
-		<section class="tower">
-			<span class="oval top-oval"></span>
-		</section>
-		<section  class="tower">
-			<span class="oval top-oval"></span>
-		</section>
-	</div>
+<div class="container">
+  <!-- so first of all, we need to draw an cylinder -->
+  <section class="tower A">
+    <span class="oval top-oval"></span>
+  </section>
+  <section class="tower B">
+    <span class="oval top-oval"></span>
+  </section>
+  <section class="tower C">
+    <span class="oval top-oval"></span>
+  </section>
+
+  <button class="start-hanoi" (click)="startHanoi()"> Organizar!</button>
+</div>
 </body>
 </html>
