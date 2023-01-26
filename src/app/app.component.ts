@@ -6,26 +6,33 @@ import { Component, ElementRef, ViewChild, Renderer2, ViewChildren, QueryList } 
   styleUrls: ['./app.component.css']
 })
 
-// const 
+// const
 export class AppComponent {
-  title = 'introduction';
-	name = 'nomenclatura';
 	colors = ["#3f92ff", "#46ff3c", "#ffff0b", "#fc6a08", "#fc333c", "#6d4d93"] // 6 colors
 
-	constructor(private renderer: Renderer2){}
+	constructor(private renderer: Renderer2, private el: ElementRef){}
 
-	@ViewChildren('item') span!: QueryList<ElementRef<HTMLSpanElement>>;
+  // @ViewChildren('tower') towers!: QueryList<ElementRef<HTMLElement>>;
 
-	ngAfterViewInit() {
-		const items = this.span.toArray()
-		console.debug(items)
+  async ngOnInit() {
+    const towers = this.el.nativeElement.querySelectorAll('.tower')
+    this.colors.forEach(color => {
+      // i was doing this just like i was with vanilla js, but this is a better approach
+      const span = this.renderer.createElement('span');
+      this.renderer.addClass(span,  'item')
+      this.renderer.setAttribute(span, 'draggable', 'true')
+      towers[0].appendChild(span)
+    })
+  }
+	async ngAfterViewInit() {
+    const items: HTMLSpanElement[] = this.el.nativeElement.querySelectorAll('.item')
 
 		items.forEach((item, i) => {
-			this.renderer.setStyle(item.nativeElement, 'width', `${i+4}rem`)
-			this.renderer.setStyle(item.nativeElement, 'background-color', `${this.colors[i]}`)
+      console.debug(item)
+			this.renderer.setStyle(item, 'width', `${i+4}rem`)
+			this.renderer.setStyle(item, 'background-color', `${this.colors[i]}`)
 
-			item.nativeElement.addEventListener()
+			// item.nativeElement.addEventListener()
 		})
-		// this.renderer.setProperty(this.span.nativeElement, '', '')
 	}
 }
