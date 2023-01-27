@@ -76,12 +76,15 @@ export class AppComponent {
   }
 
   solveHanoi(n: number, from: HTMLDivElement, to: HTMLDivElement, helper: HTMLDivElement) {
-    if (n === 1 || n === 0) {
-      to.prepend(this.items[n])
-      console.debug(`Movendo item ${n}, da torre ${from.className}, para torre ${to.className}`)
-      return
+    if (n === 0) {
+      to.prepend(this.items[0])
+      return;
     }
-    // to.prepend(this.items[n])
+    // if (n === 1) {
+    //   to.prepend(this.items[0])
+    //   console.debug(`Movendo item ${n}, da torre ${from.className}, para torre ${to.className}`)
+    //   return
+    // }
     this.solveHanoi(n - 1, from, helper, to);
     console.debug(`Movendo item ${n}, da torre ${from.className}, para torre ${to.className}`)
     if (this.items[n]) {
